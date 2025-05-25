@@ -15,7 +15,6 @@ El enfoque del curso es totalmente práctico, con ejercicios y proyectos que sim
 - Deployment: Render, Fly.io, Heroku
 - CI/CD, Git y buenas prácticas
 
-
 ## 🛠️ Tecnologías utilizadas
 
 - React
@@ -25,4 +24,3 @@ El enfoque del curso es totalmente práctico, con ejercicios y proyectos que sim
 - Jest
 - GraphQL
 - Git
-
