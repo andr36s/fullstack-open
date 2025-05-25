@@ -1,11 +1,12 @@
 # sequenceDiagram - Creacion de nota
 
+```mermaid
     Este diagrama nos va a mostrar que sucede al hacer unanueva nota y guardarla
 
     participant browser
     participan server
 
-    Usuario comienza la acción copiando y haciendo clic en save
+    Note right of browser: Usuario comienza la acción copiando y haciendo clic en save
 
     browser -> server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
@@ -32,5 +33,5 @@
     server -> browser: Data JSON
     desactivate server
 
-    El navegador trae las notas con la nueva nota incluida
+     Note right of browser: El navegador trae las notas con la nueva nota incluida
     
