@@ -1,37 +1,42 @@
-# sequenceDiagram - Creacion de nota
+# Diagrama - Creación de una nueva nota
+
+Este diagrama representa los eventos que ocurren cuando el usuario escribe una nueva nota en la página.
 
 ```mermaid
-    Este diagrama nos va a mostrar que sucede al hacer unanueva nota y guardarla
-
+sequenceDiagram
     participant browser
-    participan server
+    participant server
 
-    Note right of browser: Usuario comienza la acción copiando y haciendo clic en save
+    Note right of browser: Usuario escribe una nota y hace clic en "Save"
 
-    browser -> server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate server
-    server -> browser: HTML document
-    desactivate server
+    Note right of server: El cuerpo de la petición incluye el contenido de la nota en formato x-www-form-urlencoded
+    server-->>browser: Redirección HTTP 302 a /notes
+    deactivate server
 
-    browser -> server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    Note right of browser: El navegador sigue la redirección cargando nuevamente la página
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
-    server -> browser: Solicitud redirigida
-    desactivate server
+    server-->>browser: HTML document
+    deactivate server
 
-    browser -> server: POST https://studies.cs.helsinki.fi/exampleapp/main.js
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate server
-    server -> browser: Archivo de JavaScript 
-    desactivate server
+    server-->>browser: CSS file
+    deactivate server
 
-    browser -> server: POST https://studies.cs.helsinki.fi/exampleapp/main.css
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
     activate server
-    server -> browser: Archivo CSS
-    desactivate server
+    server-->>browser: JavaScript file
+    deactivate server
 
-    browser -> server: POST https://studies.cs.helsinki.fi/exampleapp/data.json
+    Note right of browser: El JavaScript se ejecuta y solicita los datos en formato JSON
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server -> browser: Data JSON
-    desactivate server
+    server-->>browser: JSON con todas las notas (incluyendo la nueva)
+    deactivate server
 
-     Note right of browser: El navegador trae las notas con la nueva nota incluida
-    
+    Note right of browser: El navegador renderiza las notas con la nueva incluida
