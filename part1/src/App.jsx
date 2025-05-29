@@ -26,6 +26,12 @@ const Total = ({course}) => {
 // De la tarea 1.6 a 1.14
 import { useState } from 'react'
 
+const Button = ({counter, text}) => {
+  return (
+    <button onClick={counter}>{text}</button>
+    
+  )
+}
 
 const App = () => {
   const course = {
@@ -49,6 +55,16 @@ const App = () => {
   ] 
   }
 
+  const [counter, setCounter] = useState({
+    good: 0,
+    neutral: 0,
+    bad: 0
+  })
+
+  const handleGoodClick = () => setCounter({ ...counter, good: counter.good + 1 })
+  const handleNeutralClick = () => setCounter({ ...counter, neutral: counter.neutral + 1 })
+  const handleBadClick = () => setCounter({...counter, bad: counter.bad + 1})
+
   return (
     <div>
       <h1>De la tarea 1.1 a 1.5</h1>
@@ -57,6 +73,12 @@ const App = () => {
       <Total course={course} />
 
       <h1>De la tarea 1.6 a 1.14</h1>
+      <h2>Danos un comentario</h2>
+      <Button counter={handleGoodClick} text='Good' />
+      <Button counter={handleNeutralClick} text='Neutral' />
+      <Button counter={handleBadClick} text='Bad' />
+      <h2>Estadísticas</h2>
+      <p>Good {counter.good} <br />Neutral {counter.neutral} <br />Bad {counter.bad}</p>
     </div>
   )
 }
