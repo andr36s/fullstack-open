@@ -1,4 +1,5 @@
-const Header = ({course}) => {
+// De las tareas de la 1 a 1.5
+const Header = ({ course }) => {
   return (
     <h1>{course.name}</h1>
   )
@@ -12,7 +13,7 @@ const Part = ({ name, exercises }) => {
 
 const Content = ({course}) => {
   return (
-    course.parts.map(part => <Part name={part.name} exercises={part.exercises} />)
+    course.parts.map(part => <Part key={part.id} name={part.name} exercises={part.exercises} />)
   )
 }
 
@@ -22,19 +23,26 @@ const Total = ({course}) => {
   )
 }
 
+// De la tarea 1.6 a 1.14
+import { useState } from 'react'
+
+
 const App = () => {
   const course = {
     name: 'Half Stack application development',
     parts: [
     {
+      id: 1,  
       name: 'Fundamentals of React',
       exercises: 10
     },
-    {
+      {
+      id: 2, 
       name: 'Using props to pass data',
       exercises: 7
     },
     {
+      id: 3, 
       name: 'State of a component',
       exercises: 14
     }
@@ -43,9 +51,12 @@ const App = () => {
 
   return (
     <div>
+      <h1>De la tarea 1.1 a 1.5</h1>
       <Header course={course} />
       <Content course={course} />
       <Total course={course} />
+
+      <h1>De la tarea 1.6 a 1.14</h1>
     </div>
   )
 }
