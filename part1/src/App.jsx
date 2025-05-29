@@ -33,6 +33,7 @@ const Button = ({counter, text}) => {
   )
 }
 
+// La peticion del ejercio 1.8 ya se encuentre bajo esta línea
 const calculateStadistics = (counter) => {
   const total = counter.good + counter.neutral + counter.bad;
   const promedio = (counter.good - counter.bad) / total || 0;
