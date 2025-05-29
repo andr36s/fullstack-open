@@ -33,6 +33,18 @@ const Button = ({counter, text}) => {
   )
 }
 
+const calculateStadistics = (counter) => {
+  const total = counter.good + counter.neutral + counter.bad;
+  const promedio = (counter.good - counter.bad) / total || 0;
+  const porcentajePositivo = (counter.good / total) * 100 || 0;
+
+  return {
+    total,
+    promedio,
+    porcentajePositivo
+  };
+}
+
 const App = () => {
   const course = {
     name: 'Half Stack application development',
@@ -61,6 +73,8 @@ const App = () => {
     bad: 0
   })
 
+  const stadistics = calculateStadistics(counter)
+
   const handleGoodClick = () => setCounter({ ...counter, good: counter.good + 1 })
   const handleNeutralClick = () => setCounter({ ...counter, neutral: counter.neutral + 1 })
   const handleBadClick = () => setCounter({...counter, bad: counter.bad + 1})
@@ -79,6 +93,7 @@ const App = () => {
       <Button counter={handleBadClick} text='Bad' />
       <h2>Estadísticas</h2>
       <p>Good {counter.good} <br />Neutral {counter.neutral} <br />Bad {counter.bad}</p>
+      <p>Total {stadistics.total} <br />Promedio {stadistics.promedio} <br />Positivas {stadistics.porcentajePositivo} %</p>
     </div>
   )
 }
