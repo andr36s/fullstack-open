@@ -36,9 +36,39 @@ const History = ({counter, stadistics }) => {
   } else {
     return (
       <div>
-        <h2>Estadísticas</h2>
-      <p>Good {counter.good} <br />Neutral {counter.neutral} <br />Bad {counter.bad}</p>
-      <p>Total {stadistics.total} <br />Promedio {stadistics.promedio} <br />Positivas {stadistics.porcentajePositivo} %</p>
+        <table>
+          <thead>
+            <tr>
+              <th><h2>Estadísticas</h2></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Good</td>
+              <td>{counter.good}</td>
+            </tr>
+            <tr>
+              <td>Neutral</td>
+              <td>{counter.neutral}</td>
+            </tr>
+            <tr>
+              <td>Bad</td>
+              <td>{counter.bad}</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>{stadistics.total}</td>
+            </tr>
+            <tr>
+              <td>Promedio</td>
+              <td>{stadistics.promedio}</td>
+            </tr>
+            <tr>
+              <td>Positivas</td>
+              <td>{stadistics.porcentajePositivo} %</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
   }
