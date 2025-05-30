@@ -44,9 +44,9 @@ const History = ({counter, stadistics }) => {
   }
 }
 
-const Button = ({counter, text}) => {
+const Button = ({onClick , text}) => {
   return (
-    <button onClick={counter}>{text}</button>
+    <button onClick={onClick }>{text}</button>
     
   )
 }
@@ -107,9 +107,9 @@ const App = () => {
 
       <h1>De la tarea 1.6 a 1.14</h1>
       <h2>Danos un comentario</h2>
-      <Button counter={handleGoodClick} text='Good' />
-      <Button counter={handleNeutralClick} text='Neutral' />
-      <Button counter={handleBadClick} text='Bad' />
+      <Button onClick={handleGoodClick} text='Good' />
+      <Button onClick={handleNeutralClick} text='Neutral' />
+      <Button onClick={handleBadClick} text='Bad' />
       <History stadistics={stadistics} counter={counter} />
     </div>
   )
