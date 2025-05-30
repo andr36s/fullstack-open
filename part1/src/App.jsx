@@ -26,6 +26,24 @@ const Total = ({course}) => {
 // De la tarea 1.6 a 1.14
 import { useState } from 'react'
 
+const History = ({counter, stadistics }) => {
+  if (stadistics.total === 0) {
+    return (
+      <div>
+        <p>Para interactuar con la aplicación da click en los botones</p>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h2>Estadísticas</h2>
+      <p>Good {counter.good} <br />Neutral {counter.neutral} <br />Bad {counter.bad}</p>
+      <p>Total {stadistics.total} <br />Promedio {stadistics.promedio} <br />Positivas {stadistics.porcentajePositivo} %</p>
+      </div>
+    )
+  }
+}
+
 const Button = ({counter, text}) => {
   return (
     <button onClick={counter}>{text}</button>
@@ -92,9 +110,7 @@ const App = () => {
       <Button counter={handleGoodClick} text='Good' />
       <Button counter={handleNeutralClick} text='Neutral' />
       <Button counter={handleBadClick} text='Bad' />
-      <h2>Estadísticas</h2>
-      <p>Good {counter.good} <br />Neutral {counter.neutral} <br />Bad {counter.bad}</p>
-      <p>Total {stadistics.total} <br />Promedio {stadistics.promedio} <br />Positivas {stadistics.porcentajePositivo} %</p>
+      <History stadistics={stadistics} counter={counter} />
     </div>
   )
 }
