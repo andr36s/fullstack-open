@@ -134,6 +134,7 @@ const App = () => {
   
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0));
+  let maxVotesIndex = votes.indexOf(Math.max(...votes));
 
   const handleGoodClick = () => setCounter({ ...counter, good: counter.good + 1 })
   const handleNeutralClick = () => setCounter({ ...counter, neutral: counter.neutral + 1 })
@@ -165,6 +166,7 @@ const App = () => {
       <h1>De la tarea 1.12 a 1.14</h1>
       <p>{anecdotes[selected]}</p>
       <p>Has votado {votes[selected]} veces</p>
+      <p>La anecdotas con mas votos es "{anecdotes[maxVotesIndex]}" con {votes[maxVotesIndex]}</p>
       <button onClick={handleVoteClick}>Votes</button>
       <button onClick={handleNextAnecdoteClick}>Siguiente anecdota</button>
     </div>
